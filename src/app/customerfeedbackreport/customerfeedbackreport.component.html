@@ -1,0 +1,101 @@
+<div class="container-fluid px-4 pt-2"  style="background-color:white;">
+
+  <!-- <button (click)="exportExcel()">ExportExcel</button> -->
+  <!-- <div class="row"><div class="col-md-12">Project Name:</div></div> -->
+
+  <div class="row d-flex justify-content-between pt-2" style="border:1px solid grey">
+    <!-- <div class="form-control"> -->
+    <div class="col-md-4">
+      <h3 class="fs-3 " style="text-align: left;">Survey Report</h3>
+    </div>
+
+    <div class="col-sm-4">
+
+      <form [formGroup]="form" style="background-color: white; border-radius: 5px; margin-left: 10px;">
+        <ng-multiselect-dropdown formControlName="Projects" [placeholder]="'Select Project Name'"
+          [settings]="dropdownSettings" [data]="projectList" [(ngModel)]="selectedItems"
+          (onSelect)="onItemSelect($event)" (onDeSelect)="onDeSelect($event)" (onDeSelectAll)="onDeSelectAll($event)"
+          (onSelectAll)="onSelectAll($event)">
+
+        </ng-multiselect-dropdown>
+        <!-- <div *ngIf="getControl('Projects')?.err"></div> -->
+
+      </form>
+      <div *ngIf="form.invalid && checkReportData" class="cus-feedback-val">Project name is required</div>
+      <div *ngIf="!exportReportFlag" class="cus-feedback-val"> Please generate a report</div>
+    </div>
+    <div class="col-sm-4">
+      <button class="btn-project mb-0" type="button" mat-raised-button color="primary" (click)="searchReport()">Generate
+        Report</button>
+      <button class="export mb-0" type="button" mat-raised-button color="primary" (click)="exportExcel()">Export to
+        Excel</button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="(reportList.length > 0 && !isReportAvailable); else message">
+    <div class="row mb-4 mt-5">
+      <mat-table class="col-md-12 mat-elevation-z8 px-0" [dataSource]="dataSource"  matSort #sortReport="matSort">
+
+        <ng-container matColumnDef="projectName">
+          <mat-header-cell class="border text-white" *matHeaderCellDef mat-sort-header
+            style="text-transform: capitalize;background-color: #209EC5;"> Project </mat-header-cell>
+          <mat-cell class="border-end" *matCellDef="let item"> {{ item.projectName }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="clientManagerName">
+          <mat-header-cell class="border text-white" *matHeaderCellDef mat-sort-header
+            style="text-transform: capitalize;background-color: #209EC5;"> Client </mat-header-cell>
+          <mat-cell class="border-end" *matCellDef="let item"> {{ item.clientManagerName }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="questionText">
+          <mat-header-cell class="border text-white col-md-3" *matHeaderCellDef mat-sort-header
+            style="text-transform: capitalize;background-color: #209EC5;"> Question </mat-header-cell>
+          <mat-cell class="col-md-3 border-end"  *matCellDef="let item"> {{ item.questionText }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rating">
+          <mat-header-cell class="border text-white col-md-1" *matHeaderCellDef mat-sort-header
+            style="text-transform: capitalize;background-color: #209EC5;"> Rating </mat-header-cell>
+          <mat-cell class="border-end col-md-1 d-flex justify-content-center" *matCellDef="let item"> {{ item.rating }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell class="border text-white" *matHeaderCellDef mat-sort-header
+            style="text-transform: capitalize;background-color: #209EC5;"> Worktype </mat-header-cell>
+          <mat-cell class="border-end" *matCellDef="let item"> {{ item.name }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="remarks">
+          <mat-header-cell class="border text-white col-md-3" *matHeaderCellDef mat-sort-header
+            style="text-transform: capitalize;background-color: #209EC5;"> Remarks </mat-header-cell>
+          <mat-cell class="col-md-3 border-end" *matCellDef="let item"> {{ item.remarks }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="statusID">
+          <mat-header-cell class="border text-white" *matHeaderCellDef mat-sort-header
+            style="text-transform: capitalize;background-color: #209EC5;"> Status </mat-header-cell>
+          <mat-cell  *matCellDef="let item"> {{ item.statusID }} </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+
+      <mat-paginator #paginatorFirst [pageSizeOptions]="[10,20,30,40]" showFirstLastButtons></mat-paginator>
+
+    </div>
+    
+  </ng-container>
+  <ng-template #message>
+    <ng-container *ngIf="isReportAvailable">
+      <div class="no-data-container">
+        <div class="no-data-text">
+          <p style="color: red;text-align: center;">Report is not available</p>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+  <!-- <div *ngIf="reportList.length==0 && form.valid && checkReportData">No Data Found</div> -->
+</div>

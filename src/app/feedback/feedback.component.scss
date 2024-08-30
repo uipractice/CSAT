@@ -1,0 +1,198 @@
+// .wholepg {
+//   background-image: url('../../assets/watercolor-light-steel-blue-wallpaper-image 1.jpg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+
+
+.custom-card {
+  // background: linear-gradient(to bottom, #fff, #e2e7f4);
+  // background: linear-gradient(to bottom, rgb(234, 243, 255), rgb(216, 230, 255));
+  background-color: #eeeef1b1;
+  box-shadow: 0px 0px 5px 2px gray;
+
+  /*      max-width: 700px;
+*/
+  max-width: 100%;
+  opacity: 0.9;
+  margin-top: 2%;
+  margin-left: 5%;
+}
+
+#options {
+  text-align: center;
+}
+
+.custom-container {
+  width: 80%;
+  /* Adjust the width as needed */
+  margin: 0 auto;
+  padding-top: 50px;
+  /* Increase top padding for increased height */
+  padding-bottom: 50px;
+  /* Increase bottom padding for increased height */
+}
+
+.bodycls {
+  width: 100%;
+  /* Adjust the width as needed */
+  margin: 0 auto;
+  padding-top: 50px;
+  /* Increase top padding for increased height */
+  padding-bottom: 50px;
+  /* Increase bottom padding for increased height */
+  /*      background-image: url('~/fonts/collage-customer-experience-concept.jpg');
+*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  /* Set the height to 100% of the viewport height */
+
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #7c0f1a;
+  border-color: #8b0d19;
+}
+
+.col-form-label {
+  padding-top: calc(0.375rem + 1px);
+  padding-bottom: calc(0.375rem + 1px);
+  margin-bottom: 0;
+  font-size: inherit;
+  line-height: 2.5;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.checkbox-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.checkbox-container label {
+  display: block;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+  width: 80%;
+  padding-right: 0px;
+  padding-left: 0px;
+
+
+}
+
+.example-section {
+  margin: 12px 0;
+  background-color: #ffffff;
+  max-height: 75px;
+  overflow-y: auto;
+  list-style-type: none;
+    padding: 0;
+
+}
+
+.example-margin {
+  margin: 0 12px;
+}
+
+.custom-margin {
+  margin-left: 75px;
+}
+.custom-margin1{
+  margin-left: 5px;
+}
+
+.custom-width {
+  width: 90%;
+}
+.customer-name
+{
+  border-radius: 5px;
+  border:1px solid rgba(221, 216, 216, 0.901);
+  background-color:#fff;
+  padding: 0px;
+  // width: 493px !important;
+  height:38px;
+  margin-left: 13px;
+  max-width: 64%;
+}
+.worktype-val
+{
+  margin-top: 2px;
+  margin-bottom: 7px;
+}
+
+.heading{
+  background: #F8F8F8;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.15);
+}
+
+.fs-6{
+  color: var(--Neutral-Colors-Color-3, #87889D);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.14px;
+}
+
+#fromDate,#toDate{
+  color: var(--Neutral-Colors-Color-2, #575369);
+  font-size: small;
+
+}
+
+.reset-button{
+  border: 1px solid #209EC5;
+  color: #209EC5;
+
+  &:hover{
+    // background: orangered;
+    border:1px solid darkblue;
+    color:#fff;
+  }
+
+}
+
+.send-button{
+  background: #209EC5;
+}
+
+.select-with-arrow {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 10L12 14L8 10" stroke="%237b7b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%;
+  padding-right: 2.5em;
+}
+.customer-row {
+  @media screen and (max-width: 480px) {
+    flex-direction: column; // Change to column layout on smaller screens
+    align-items: flex-start; // Align items to the start on smaller screens
+  }
+}

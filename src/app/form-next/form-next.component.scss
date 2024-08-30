@@ -1,0 +1,352 @@
+.container-fluid {
+  padding:0px;
+}
+.fdbkheader {
+  background: none;
+    display: inline-flex;
+    padding: 14px 15px 14px 15px;
+    flex-direction: row;
+    /* justify-content: left; */
+    /* align-items: flex-start; */
+    position: absolute;
+    z-index: 999;
+    top:0px;
+  }
+  .imgfdbkheader {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    width:100%;
+    max-width:100%;
+    padding:0px;
+
+  }
+  .toolbar-text {
+    color: #FCBF49;
+    font-size: 24px;
+    height: 36px;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .toolbar-text h1{
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    border-left: 1px solid #7B7B7B;
+    padding: 10px 0px;
+    padding-left: 24px;
+  }
+
+  .mat-icon-image {
+    margin-right:32px;
+    height: auto;
+  }
+  .h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-left: 269px;
+    color: #FFFFFF;
+    margin-top: -39px;
+    padding-left: 0px;
+    margin-left: auto;
+    text-align: left;
+    padding-bottom:9px;
+    /* text-align: center; */
+    padding-left: 354px;
+  }
+  .image-element {
+    //width: 204px;
+    height: 150px;
+    gap: 0px; /* Note: The `gap` property is typically used with flexbox or grid layouts. If it's not in such a context, it might be ignored. */
+    border-radius: 30px 0 0 0; /* Applies rounded corners only on the top-left corner */
+    opacity: 1; /* Fully transparent element */
+    margin-top:-75px;
+  }
+  .body-background-color{
+    background: #F8F8F9
+  }
+  .mat-label-generic-body {
+    font-family: 'Inter', sans-serif; /* Specifies the Inter font family with a fallback */
+    font-size: 16px;                 /* Sets the font size to 16 pixels */
+    font-weight: 500;                /* Sets the font weight to 500 (medium) */
+    line-height: 24px;               /* Sets the line height to 24 pixels */
+    text-align: center;              /* Centers the text horizontally */
+    //width:1000px;
+    height: 80px;
+    color: #575369;
+  }
+  .text-your-element {
+    width: 100%;
+    max-width: 652px;
+    height: 72px;
+    padding:10px;
+    border-radius: 4px 4px 4px 4px;
+    height:82px !important;
+    border-radius: 4px;
+    border:1px solid rgba(145, 158, 171, 0.32);
+    margin: 0px 16px;
+  }
+  .div-your-element {
+
+    padding: 16px 0 0 0; /* Padding: top 16px, right 0, bottom 0, left 0 */
+    gap: 10px; /* Space between items (used in Flexbox or Grid layouts) */
+    border-radius: 8px 8px 8px 8px; /* Rounded corners: top-left 8px */
+    opacity: 1; /* Fully transparent */
+    width: 100%;
+    text-align:center;
+    //background: #FFFFFF;
+    border-radius: 8px;
+background: var(--Brand-Primary-evWhite, #FFF);
+box-shadow: 0px 4px 8px 0px rgba(145, 158, 171, 0.08);
+margin-bottom: 22px;
+padding:16px;
+  }
+  .div-your-element  h3{
+   display: block;
+   padding-bottom:0px;
+   text-align:left;
+   font-size: 16px;
+font-weight: 400;
+line-height: 24px; /* 150% */
+letter-spacing: -0.1px;
+  }
+
+  .button-element {
+    width: 120px; /* Fixed width of 120px */
+    height: 48px; /* Fixed height of 48px */
+    padding: 11px 22px; /* Padding: 11px on top and bottom, 22px on left and right */
+    gap: 0px; /* Space between items (used in Flexbox or Grid layouts) */
+    border-radius: 4px 4px 4px 4px; /* Rounded corners: top-left 4px */
+    border: 1px solid black; /* Border: 1px width, solid style, black color */
+    opacity: 1; /* Fully transparent */
+    background: var(--Brand-Primary-Colors-Evoke-Saffron-Tint-ES-Tint-80, #F27938);
+  }
+
+.final {
+  font-family:"Inter";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  color:#434345;
+}
+.form-body {
+width: 100%;
+max-width: 754px;
+margin: 0 auto;
+  }
+.ftnl{
+  color: #434345;
+    padding:0px 0px 22px 24px;
+    display: block;
+    font-family:'Inter';
+    font-size:20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+
+}
+
+.emoji {
+  position:fixed;
+  right:0px;
+  top:30%;
+  list-style:none;
+  background:#fff;
+  display: inline-flex;
+padding: 20px 10px;
+flex-direction: column;
+align-items: center;
+gap: 14px;
+}
+.emoji span{
+font-size: 14px;
+font-weight: 400;
+line-height: 18px; /* 128.571% */
+letter-spacing: -0.1px;
+display: block;
+}
+.hide-d {
+  display: none;
+}
+
+.feedback-container {
+  text-align: center;
+  max-width: 754px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius:10px;
+  margin-top:136px;
+  padding-bottom:30px !important;
+}
+
+.progress {
+  width:85%;
+    background-color: initial;
+    border-radius: 5px;
+    height:6px;
+    position:fixed;
+    top:137px;
+    left: 140px;
+z-index: 99;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #F16A22;
+  border-radius:5px;
+  transition: width 0.3s;
+}
+
+.emoji-selection {
+  display: flex;
+  justify-content:left;
+  margin-bottom: 10px;
+  margin-left: 12px;
+}
+
+.emoji-option {
+  cursor: pointer;
+  margin: 0 3px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.emoji-option img {
+  width: 40px;
+  height:40px;
+}
+
+.emoji-option.selected {
+  // border: 2px solid #007bff;
+  // background-color: #e9ecef;
+  transform: scale(1.1);
+}
+
+.comment-box {
+  margin-top: 10px;
+  text-align: left;
+}
+
+// .comment-box textarea {
+//   width: 100%;
+//   padding: 10px;
+//   font-size: 14px;
+//   border-radius: 5px;
+//   border: 1px solid #ccc;
+//   resize: none;
+// }
+
+.action-buttons {
+  display:flex;
+  margin: 20px 0;
+  justify-content: center;
+  align-items: center;
+  gap:26px;
+}
+
+button {
+width: 120px;
+padding: 11px 22px;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+border-radius: 4px;
+background:#F27938;
+border:0px;
+font-family:"Inter";
+font-size: 15px;
+font-weight: 700;
+line-height: 26px;
+color:#fff;
+}
+.btn-outline {
+  border:1px solid rgba(145, 158, 171, 0.32);
+  background:#fff;
+  color:#9C9C9D;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .imgfdbkheader {
+    height: 80px !important;
+  }
+
+  .emoji {
+display: none;
+  }
+}
+@media (max-width: 480px) {
+  .imgfdbkheader {
+    height: 80px !important;
+  }
+  .feedback-container {
+    padding:0px;
+  }
+  .emoji {
+    display: none;
+      }
+  .text-your-element {
+  margin:0px;
+  }
+  .emoji-selection {
+    margin-left:0px;
+  }
+  .emoji-option {
+    padding: 0px 3px;
+    margin:0 3px;
+  }
+  .ftnl {
+  padding: 1px 0px 11px 10px;
+  font-size: 16px;
+  }
+.progress {
+  width: 99%;
+  top:80px;
+  left: 0px;
+  background: #f8f9fa;
+}
+.action-buttons {
+  gap: 12px;
+}
+.toolbar-text {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+}
+.toolbar-text h1{
+border-left:0px;
+}
+.mat-icon-image {
+  margin:0;
+}
+.h2 {
+  font-size:18px;
+  margin-top: 30px;
+  color: #000;
+  padding:10px 10px 0px 10px;
+}
+.hide-m {
+  display: none;
+}
+.hide-d {
+  display:block;
+}
+.feedback-container {
+  padding:0px;
+  margin-top:98px;
+}
+}

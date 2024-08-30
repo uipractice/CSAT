@@ -1,0 +1,38 @@
+.container-fluid{
+  min-height: 89vh;
+  background-color: #b3dded;
+}
+.cus-feedback-val
+{
+    color: red;
+    margin-left: 15px;
+    text-align: center;
+}
+.btn-project
+{
+    margin-bottom: 45px
+}
+.export
+{
+    margin-bottom: 45px;
+    margin-left: 15px;
+}
+.table-container {
+  max-width: 100%; /* Adjust the value based on your needs */
+  overflow-x: auto; /* Add horizontal scrollbar if necessary */
+  margin: auto; /* Center the table within the col-md-12 */
+}
+.mat-paginator {
+  display: flex;
+  justify-content: center;
+}
+
+// mat-cell.column-questionText  {
+//   columns: 2;
+// }
+
+// mat-cell.column-remarks {
+//  column-span: all; }
+
+
+

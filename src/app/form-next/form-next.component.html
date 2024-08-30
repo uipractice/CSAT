@@ -1,0 +1,127 @@
+
+<div class="container-fluid">
+  <div class="fixed-top">
+    <div class="container"><mat-toolbar class="fdbkheader">
+      <!-- Image to the left of the toolbar -->
+      <a class="mat-icon-image"><img src="../../assets/logo.svg" alt="Logo" title="Logo"/></a>
+      <span class="toolbar-text">
+        <h1>{{projectName}}</h1>
+      </span>
+  </mat-toolbar>
+
+</div>
+  <img class="imgfdbkheader" src="../../assets/header-questioners.png" alt="Customer Banner" title="Customer satisfaction survey ">
+  <div class="container"> <h2 class="h2 hide-m">Customer satisfaction survey (5/9)</h2></div>
+
+</div>
+<div class="container">
+<div class="body-background-color">
+    <div class="feedback-container">
+      <div class="feedback-main">
+      <div class="progress">
+        <div class="progress-bar" [style.width]="progress + '%'"></div>
+      </div>
+      <h2 class="h2 hide-d">Customer satisfaction survey (5/9)</h2>
+
+      <mat-label class="ftnl">Please provide ratings for the following</mat-label>
+
+
+        <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+          <h2>Feedback Survey</h2>
+
+          <!-- Progress Bar -->
+          <div class="progress">
+            <div class="progress-bar" [style.width]="progress + '%'"></div>
+          </div>
+
+          <!-- Questions with Emojis and Comment Box -->
+          <div class="div-your-element" *ngFor="let question of questions; let i = index" [hidden]="i !== currentQuestion">
+            <h3>{{ question.text }}</h3>
+
+            <div class="emoji-selection">
+              <div *ngFor="let emoji of question.emojis"
+                   class="emoji-option"
+                   [class.selected]="emoji === question.selectedEmoji"
+                   (click)="selectEmoji(i, emoji)">
+                <img [src]="emoji.src" alt="{{ emoji.name }}"
+                     (mouseover)="hoverEmoji(i, emoji)"
+                     (mouseout)="unhoverEmoji(i, emoji)" />
+              </div>
+            </div>
+
+            <div class="comment-box">
+              <textarea [(ngModel)]="question.comment" name="comment-{{i}}" placeholder="Add your comments here..." required></textarea>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="navigation-buttons">
+            <button type="button" (click)="previousQuestion()" [disabled]="currentQuestion === 0">Previous</button>
+            <button type="button" (click)="nextQuestion()" [disabled]="!questions[currentQuestion].selectedEmoji || !questions[currentQuestion].comment || currentQuestion === questions.length - 1">Next</button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button type="button" (click)="resetForm()" [disabled]="!feedbackForm.dirty">Reset</button>
+            <button type="button" (click)="saveForm()" [disabled]="!feedbackForm.dirty">Save</button>
+            <button type="submit" [disabled]="!isFormComplete()">Submit</button>
+          </div>
+        </form>
+
+
+      <ul class="emoji">
+        <li>
+          <object type="image/svg+xml" data="../../assets/very_satisfied-default.svg" width="40" height="40">
+           &nbump;</object>
+           <span>Excellent</span>
+          </li>
+          <li>
+          <object type="image/svg+xml" data="../../assets/satisfied-default.svg" width="40" height="40">
+           &nbump;</object>
+           <span>Good</span>
+          </li>
+          <li>
+          <object type="image/svg+xml" data="../../assets/neutral-default.svg" width="40" height="40">
+           &nbump;</object>
+           <span>Neutral</span>
+
+          </li>
+          <li>
+          <object type="image/svg+xml" data="../../assets/dissatisfied-default.svg" width="40" height="40">
+           &nbump;</object>
+           <span>Dissatisfied</span>
+          </li>
+          <li>
+            <object type="image/svg+xml" data="../../assets/very_dissatisfied-default.svg" width="40" height="40">
+             &nbump;</object>
+             <span>Very<br/> Dissatisfied</span>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div *ngIf="" class="thank-you-page">
+          <img src="../../assets/ok.svg" alt="Thank you" title="Thank you!" >
+          <h4>Thank you !</h4>
+          <p>Your feedback has been recorded. <br/>
+              We appreciate your trust in Evoke and look forward to continuing to serve you.
+          </p>
+
+        </div>
+
+    <footer>
+      <div class="fixed-bottom">Powered by Evoke Technologies</div>
+    </footer>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+

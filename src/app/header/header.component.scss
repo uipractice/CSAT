@@ -1,0 +1,62 @@
+// .header {
+//   background-image: url(https://img.freepik.com/free-photo/purple-pink-watercolor-texture-background_1083-169.jpg?1&w=826&t=st=1696316416~exp=1696317016~hmac=ae8ba9929dcd49bf808cc0b37737591b2de4b67fac4522d4dab3c31a5d01442a);
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   color: #fcfcfc;
+//   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+//   font-weight: bolder;
+//   padding: 10px 0;
+//   text-align: center;
+//   border: 1px black;
+//   max-height: 500px;
+// }
+
+// .header h1 {
+//   margin: 0;
+//   font-size: 24px;
+// }
+
+mat-toolbar {
+  background-color:  #1b154c;
+  color: white;
+  box-shadow: 2px 2px 2px 0.5px;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav {
+  background-color: #ebebeb;
+  padding: 10px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.welcome-message {
+  background-color: #e8eaf6;
+  color: #1b154c;
+  padding: 20px;
+  text-align: center;
+}
+mat-grid-tile {
+  background: #dbdbdbcf;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.blue-text {
+  color: #1b154c;
+}
+mat-grid-tile:hover{
+ background-color:#e0e5ff;
+ cursor: pointer;
+}
+.spacer {
+  flex: 1; /* This will take up all available space, pushing the following content to the right */
+}
+

@@ -1,0 +1,36 @@
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: refs/heads/Devops/2023.12.010
+jobs:
+- job: Build
+  displayName: Build
+  pool:
+    vmImage: windows-latest
+
+  steps:
+  - checkout: self
+    fetchDepth: 1
+  
+  - task: Npm@1
+    inputs:
+      command: 'install'
+      workingDir: '$(build.sourcesdirectory)'
+  - task: Npm@1
+    displayName: npm custom
+    inputs:
+      command: custom
+      workingDir: $(build.sourcesdirectory)/dist
+      verbose: false
+      customCommand: run build
+  - task: ArchiveFiles@2
+    displayName: Archive $(build.artifactstagingdirectory)/dist
+    inputs:
+      rootFolderOrFile: $(build.artifactstagingdirectory)/dist
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
+...

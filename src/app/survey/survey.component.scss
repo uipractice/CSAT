@@ -1,0 +1,93 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 1100px;
+  margin-top: 0px;
+  justify-content: center;
+  padding: 10px;
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  mat-card {
+    margin: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+  .custom-table{
+    background-color: #ffffff81;
+    border-radius: 10px;
+  }
+  .custom-textarea {
+    width: 350px; /* Adjust the width as needed */
+  }
+
+
+}
+
+.h3 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Styling for the feedback popup */
+.feedback-popup {
+  max-width: 400px;
+  background-image: url(https://img.freepik.com/free-photo/bright-pop-landscape-design_23-2149169838.jpg?w=1060&t=st=1698920624~exp=1698921224~hmac=190a1382cd856a280a9fd3389535b891c067c4a9295b4adcfbeaceaf1a86ea7a);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+/* Style for the "Ok" button */
+#okButton {
+  background-color: #a945fb; /* Use your desired button color */
+  color: #fff;
+  border: none;
+  padding: 5px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Add a transition effect */
+  }
+
+#okButton:hover {
+  background-color: #7a07f6; /* Change the button color on hover */
+  outline: 1.5px solid #ffffff; /* Add a box around the "Ok" text inside the button */
+  outline-offset: -4px;
+}
+
+.message-card {
+  background-image: url(https://img.freepik.com/premium-vector/night-river-with-mountain-illustration_117074-12.jpg?w=1060);
+  background-repeat:no-repeat ;
+  background-size: cover;
+  color: #fff; /* Text color */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.message-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.message-card p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+.innerimage{
+  position: absolute;
+  top: 2px;
+  right: 9px;
+  height: 50px;
+}

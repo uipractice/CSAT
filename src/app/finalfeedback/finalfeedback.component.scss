@@ -1,0 +1,154 @@
+// #divBackground{
+//     background-image: url(../../assets/Send-email-bg-1.png);
+// }
+
+.container-fluid {
+  padding:0px;
+}
+.fdbkheader {
+  background: none;
+    display: inline-flex;
+    padding: 14px 15px 14px 15px;
+    flex-direction: row;
+    /* justify-content: left; */
+    /* align-items: flex-start; */
+    position: absolute;
+    z-index: 999;
+    top:0px;
+  }
+  .imgfdbkheader {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    width:100%;
+    max-width:100%;
+    padding:0px;
+
+  }
+  .toolbar-text {
+    color: var(--Semantic-Colors-evgold, #FCBF49);
+    font-size: 24px;
+    height: 36px;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .toolbar-text h1{
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    border-left: 1px solid #7B7B7B;
+    padding: 13px 0px;
+    padding-left: 20px;
+  }
+
+  .mat-icon-image {
+    margin-right: 40px;
+    height: auto;
+  }
+  .h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-left: 269px;
+    color: #FFFFFF;
+    margin-top: -41px;
+    padding-left: 80px;
+    margin-left:auto;
+  }
+  .image-element {
+    //width: 204px;
+    height: 150px;
+    gap: 0px; /* Note: The `gap` property is typically used with flexbox or grid layouts. If it's not in such a context, it might be ignored. */
+    border-radius: 30px 0 0 0; /* Applies rounded corners only on the top-left corner */
+    opacity: 1; /* Fully transparent element */
+    margin-top:-75px;
+  }
+  .body-background-color{
+    background: #F8F8F9
+  }
+  .mat-label-generic-body {
+    font-family: 'Inter', sans-serif; /* Specifies the Inter font family with a fallback */
+    font-size: 16px;                 /* Sets the font size to 16 pixels */
+    font-weight: 500;                /* Sets the font weight to 500 (medium) */
+    line-height: 24px;               /* Sets the line height to 24 pixels */
+    text-align: center;              /* Centers the text horizontally */
+    //width:1000px;
+    height: 80px;
+    color: #575369;
+  }
+  .text-your-element {
+    width: 100%;
+    min-width: 420px;
+    height: 72px;
+    padding: 9px 287px 45px 13px;
+    gap: 0px;
+    border-radius: 4px 4px 4px 4px;
+    border: 1px solid black;
+    opacity: 1;
+    height: 82px !important;
+    padding: 9px 287px 45px 13px;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid var(--button-input, rgba(145, 158, 171, 0.32));
+    margin: 0px 16px;
+  }
+  .div-your-element {
+
+    padding: 16px 0 0 0; /* Padding: top 16px, right 0, bottom 0, left 0 */
+    gap: 10px; /* Space between items (used in Flexbox or Grid layouts) */
+    border-radius: 8px 8px 8px 8px; /* Rounded corners: top-left 8px */
+    opacity: 1; /* Fully transparent */
+    width: 100%;
+    text-align:center;
+    //background: #FFFFFF;
+    border-radius: 8px;
+background: var(--Brand-Primary-evWhite, #FFF);
+box-shadow: 0px 4px 8px 0px rgba(145, 158, 171, 0.08);
+margin-bottom: 22px;
+padding:16px;
+  }
+  .div-your-element mat-label{
+   display: block;
+   padding-bottom:10px;
+   text-align:left;
+  }
+
+  .button-element {
+    width: 120px; /* Fixed width of 120px */
+    height: 48px; /* Fixed height of 48px */
+    padding: 11px 22px; /* Padding: 11px on top and bottom, 22px on left and right */
+    gap: 0px; /* Space between items (used in Flexbox or Grid layouts) */
+    border-radius: 4px 4px 4px 4px; /* Rounded corners: top-left 4px */
+    border: 1px solid black; /* Border: 1px width, solid style, black color */
+    opacity: 1; /* Fully transparent */
+    background: var(--Brand-Primary-Colors-Evoke-Saffron-Tint-ES-Tint-80, #F27938);
+  }
+
+.final {
+  font-family:"Inter";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  color:#434345;
+}
+.form-body {
+width: 100%;
+max-width: 754px;
+margin: 0 auto;
+  }
+.ftnl{
+  color: #434345;
+    padding: 17px 0px 22px 24px;
+    display: block;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+
+}

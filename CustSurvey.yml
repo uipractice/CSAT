@@ -1,0 +1,57 @@
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: refs/heads/Devops/2023.12.010
+jobs:
+- job: Build
+  displayName: Build
+  pool:
+    vmImage: windows-latest
+
+  steps:
+  - checkout: self
+    fetchDepth: 1
+     
+
+  - task: NodeTool@0
+    displayName: 'Install Node.js 16.x'
+    inputs:
+      versionSource: 'spec'
+      versionSpec: '16.x'
+      checkLatest: true
+  
+  - task: Npm@1
+    displayName: Install the Angular CLI globally
+    inputs:
+      command: 'custom'
+      customCommand: 'install -g @angular/cli'
+  
+  - task: Npm@1
+    displayName: Install Angular app packages
+    inputs:
+      command: 'custom'
+      customCommand: 'ci'
+  
+  - task: Npm@1
+    displayName: Build the app
+    inputs:
+      command: 'custom'
+      verbose: false
+      customCommand: 'run build'
+  
+  - task: ArchiveFiles@2
+    displayName: Zip Angular dist folder
+    inputs:
+      rootFolderOrFile: '$(Build.sourcesdirectory)\dist'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/dist.zip'
+      replaceExistingArchive: true
+  
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Angular app dist folder artifact
+    inputs:
+     targetPath: '$(Build.ArtifactStagingDirectory)/dist.zip'
+     artifactName: 'drop'
+     publishLocation: 'pipeline'

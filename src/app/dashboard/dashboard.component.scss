@@ -1,0 +1,24 @@
+.fdbkheader {
+  background: var(--Brand-Primary-evBlue, #1B154C);
+  display: inline-flex;
+  padding: 14px 0px 14px 30px;
+  flex-direction: row;
+  justify-content: left;
+  align-items: flex-start;
+}
+
+mat-header-cell{
+  color: #209EC5;
+}
+
+.sharebtn{
+  background-color: #209EC5;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.cards{
+  p{
+    color:#575369;
+}
+}

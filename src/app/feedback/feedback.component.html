@@ -1,0 +1,311 @@
+<!-- <div class="container mt-5 custom-container"
+  style="margin-top: -1rem !important; margin-right: 1rem !important; margin-left: 6rem !important;">
+  <div class="card custom-card">
+    <div class="card-header bg-primary text-white"
+      style="background-color: #1b154c !important;min-height:max-content;max-height: max-content;">
+
+      <h4 class="mb-4" style="text-align: center;margin-top: 10px;"> CUSTOMER FEEDBACK FORM</h4>
+    </div>
+    <div class="card-body">
+      <form id="form" [formGroup]="myForm">
+        <div class="form-group row" style="margin-right: 57px">
+          <div class="row">
+            <div class="col-md-4 col-form-label">Project Work Type<span style="color: red;">*</span>:</div>
+            <div class="col-md-8">
+              <select formControlName="projectWorkType"
+                *ngIf="ddlSDFCMethods && ddlSDFCMethods.length > 0; else noOptions" class="form-control"
+                id="ddlSDFCMethods" style="text-align:center" (change)="onProjectWorkTypeChange($event)">
+                <option value="">--Select--</option>
+                <option *ngFor="let item of ddlSDFCMethods" [ngValue]="item" [value]="item.workTypeID+','+item.name">{{
+                  item.name }}</option>
+              </select>
+              <ng-template #noOptions>
+                <select class="form-control col-sm-8" id="ddlSDFCMethods" style="text-align: center">
+                  <option value="" disabled selected>--Select--</option>
+                </select>
+              </ng-template>
+              <div class="worktype-val">
+                <div *ngIf="this.myFormSubmitted && myForm.controls['projectWorkType'].invalid"
+                  style="color: red; margin-left: 5px;">Project work type is required </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-form-label">Delivery Manager:</div>
+            <div class="col-md-8">
+              <select formControlName="dmManager" class="form-control" id="ddlDeliveryManager"
+                (change)="getProjectsByDM($event);" style="text-align:center">
+                <option value='' id='options'>--Select--</option>
+                <option *ngFor="let manager of projectDetails" [value]="manager.empName+','+manager.empID">{{
+                  manager.empName }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-form-label">Project(s)<span style="color: red;">*</span>:</div>
+            <div class="col-md-8">
+              <select formControlName="Projects" class="form-control" id="ProjectsList;"
+                (change)="onProjectSelectionChange($event)" style="text-align: center">
+                <option value='' id='options'>--Select--</option>
+                <option *ngFor="let project of projectDetailsbyDM" [ngValue]="project"
+                  [value]="project.projectID +','+ project.projectName ">{{ project.projectName }}</option>
+              </select>
+              <div class="worktype-val">
+                <div *ngIf="this.myFormSubmitted && myForm.controls['Projects'].invalid"
+                  style="color: red; margin-left: 5px;">Project is required </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-form-label">Customer Name:</div>
+            <div class="col-md-8">
+              <div class="form-control"  contenteditable>
+                <div *ngFor="let customer of customers" style="overflow-y: scroll;">
+                  <mat-checkbox formControlName="customerName" class="example-margin" color="primary"
+                    [id]="customer.clientManagerName" [value]="customer.clientManagerName"
+                    (change)="onCheckboxChange(customer.clientEmail,customer.clientManagerName,customer.clientID, $event.checked)"></mat-checkbox>
+                  <label [for]="customer">{{ customer.clientManagerName }}</label>
+                  <input type="hidden" name="SelectedCustomerEmails" id="SelectedCustomerEmailsField" />
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8 worktype-val">
+              <div *ngIf="this.myFormSubmitted && myForm.controls['projectWorkType'].valid && myForm.controls['Projects'].valid && !myForm.value.customerName" style="color: red;">Please select customerName</div>
+            </div>
+            </div>
+          <div style="height: 30px;"></div>
+          <div class="row">
+            <div class="col-md-4 col-form-label">Specify Date:</div>
+            <div class="col-md-8">
+              <div class="col-md-6" style="display: inline-block;">
+                <mat-form-field class="custom-width">
+                  <mat-label>From Date</mat-label>
+                  <input matInput [matDatepicker]="picker1" [value]="date1.value">
+                  <mat-hint style="font-size: smaller;">MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6" style="display: inline-block;text-align: right;">
+                <mat-form-field class="custom-width">
+                  <mat-label>To Date</mat-label>
+                  <input matInput [matDatepicker]="picker2" [value]="date.value" [max]="maxDate">
+                  <mat-hint style="font-size: smaller;">MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" name="SelectedCustomerName" id="SelectedCustomerNameField" />
+          <br />
+          <br />
+          <br />
+          <div class="col-md-12" style="color:green">
+          </div>
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-dark mr-2"
+            style="background-color: #23344e !important;margin-right: 20px;" (click)="sendEmail();">Send Email</button>
+          <button type="button" class="btn btn-danger" style="background-color: #8b0d19 !important;"
+            (click)="clearInputs()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  style="background-color: rgba(90, 64, 147, 0.089);">
+  <div class="modal-dialog">
+    <div class="modal-content feedback-popup">
+      <div class="modal-header" style="border-bottom: none;">
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center;">{{MailUpdate}}</p>
+
+        <div class="text-center">
+          <button class="btn btn-primary" id="okButton" (click)="onOkButtonClick()">Ok</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="mx-3 mt-4 d-flex justify-content-between">
+              <div class="flex-column">
+                <mat-form-field style="width: 60%;">
+                  <mat-label>From Date</mat-label>
+                  <input class="form-control" matInput [matDatepicker]="picker1" [value]="date1.value">
+                  <mat-hint style="font-size: smaller;">MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+
+              </div>
+              <div class="flex-column">
+                <mat-form-field style="width: 60%;">
+                  <mat-label>To Date</mat-label>
+                  <input class="form-control" matInput [matDatepicker]="picker2" [value]="date.value" [max]="maxDate">
+                  <mat-hint style="font-size: smaller;">MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div> -->
+
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center pt-4">
+    <div class="col-md-12 bg-light m-3 rounded-1 p-0 w-75 shadow-lg align-items-center">
+
+      <div class="d-flex justify-content-between align-items-center px-3 py-2 rounded-top-1 heading" style="background-color: #1b154c;">
+        <h3 class="fs-5 mt-1" style="color: #fff;">Share Feedback Form</h3>
+        <!-- <a class="mb-1" style="cursor: pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+            <path d="M15.6682 1.7218L1.66846 15.7216" stroke="#57565C" stroke-width="2" stroke-linecap="round" />
+            <path d="M1.66895 1.7218L15.6688 15.7216" stroke="#57565C" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </a> -->
+      </div>
+      <form id="form" [formGroup]="myForm">
+        <div class="row d-flex justify-content-center align-items-top">
+          <div class="col-md-6">
+            <div class="m-3">
+              <label for="projectType" class="form-label fs-6">Project Type<span style="color: red;">*</span></label>
+              <select formControlName="projectWorkType"
+                *ngIf="ddlSDFCMethods && ddlSDFCMethods.length > 0; else noOptions" class="form-control rounded-1 p-2 text-secondary select-with-arrow"
+                id="ddlSDFCMethods" style="text-align:left" (change)="onProjectWorkTypeChange($event)">
+                <option value="">-- Select --</option>
+                <option *ngFor="let item of ddlSDFCMethods" [ngValue]="item" [value]="item.workTypeId+','+item.name">{{
+                  item.name }}</option>
+              </select>
+              <ng-template #noOptions>
+                <select title="ProjectType" class="form-control col-sm-8 rounded-1 p-2" id="ddlSDFCMethods" style="text-align: left">
+                  <option value="" disabled selected>-- Select --</option>
+                </select>
+              </ng-template>
+              <div class="worktype-val">
+                <div *ngIf="this.myFormSubmitted && myForm.controls['projectWorkType'].invalid"
+                  style="color: red; margin-left: 5px;">Project work type is required </div>
+              </div>
+            </div>
+            <div class="m-3">
+              <label for="project" class="form-label fs-6">Project<span style="color: red;">*</span></label>
+              <select formControlName="Projects" class="form-control rounded-1 p-2 text-secondary select-with-arrow" id="ProjectsList;"
+                (change)="onProjectSelectionChange($event)" style="text-align: left">
+                <option value='' id='options' style="text-align:left">-- Select --</option>
+                <option *ngFor="let project of projectDetailsbyDM" [ngValue]="project"
+                  [value]="project.projectID +','+ project.projectName ">{{ project.projectName }}</option>
+              </select>
+              <div class="worktype-val">
+                <div *ngIf="this.myFormSubmitted && myForm.controls['Projects'].invalid"
+                  style="color: red; margin-left: 5px;">Project is required </div>
+              </div>
+            </div>
+            <div class="ms-3 d-flex justify-content-between me-3">
+              <div class="d-flex flex-column">
+                <label for="fromDate" class="form-label fs-6">From Date</label>
+                <div class="input-group form-control p-0">
+                  <input (keydown)="onInput($event)" (dateChange)="CurrentFromDate($event)" (keypress)="$event.preventDefault()" type="text" class="form-control border-0 text-left ps-3 mt-1 py-0" formControlName="fromDate" id="fromDate" matInput [matDatepicker]="picker1" [value]="date1.value" [max]="maxDate"/>
+                  <mat-datepicker-toggle [for]="picker1">
+                    <mat-icon >event</mat-icon>
+                  </mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </div>
+              </div>
+              <div class="ms-5 d-flex flex-column">
+                <label for="toDate" class="form-label fs-6">To Date</label>
+                <div class="input-group form-control p-0">
+                  <input (keydown)="onInput($event)" (keypress)="$event.preventDefault()" (dateChange)="CurrentToDate($event)" type="text" class="form-control border-0 text-left ps-3 py-0 mt-1" formControlName="toDate" id="toDate" matInput [matDatepicker]="picker2" [value]="date.value" [max]="maxDate"/>
+                  <mat-datepicker-toggle [for]="picker2">
+                    <mat-icon>event</mat-icon>
+                  </mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="isValidDates" style="margin-left: 16px;" class="worktype-val">
+              <p style="color: red;">{{validationMessage}}</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="m-3">
+              <label for="deliveryManager" class="form-label fs-6">Delivery Manager<span style="color: red;">*</span></label>
+              <select title="Delivery Manager" formControlName="dmManager" class="form-control rounded-1 p-2 text-secondary select-with-arrow" id="ddlDeliveryManager"
+                (change)="getProjectsByDM($event);" style="text-align:left">
+                <option value='' id='options' style="text-align: left;">-- Select --</option>
+                <option *ngFor="let manager of projectDetails" [value]="manager.empName+','+manager.empID+','+manager.empEmail">{{
+                  manager.empName }}</option>
+              </select>
+              <div class="worktype-val">
+                <div *ngIf="this.myFormSubmitted && myForm.controls['dmManager'].invalid"
+                  style="color: red; margin-left: 5px;">Delivery Manager is required</div>
+              </div>
+            </div>
+            <div class="m-3">
+              <label for="deliveryManager" class="form-label fs-6">Customer Name<span
+                  style="color: red;">*</span></label>
+              <div class="form-control rounded-1" style="min-height: 40px;max-height: max-content;" formGroupName="cust"
+                fxLayout="column">
+                <p class="p-0 m-0 text-secondary" *ngIf="!showCustomer" >-- Customer Name --</p>
+                <div *ngFor="let customer of customers" style="overflow-y: scroll;" fxLayout="row" fxLayoutGap="8px"
+                  class="customer-row">
+                  <mat-checkbox color="primary"
+                    [checked]="myForm.get('cust.customerName')?.value.includes(customer.clientManagerName)"
+                    (change)="onCheckboxChange(customer.clientEmail, customer.clientManagerName, customer.clientId, $event.checked)">
+                  </mat-checkbox>
+
+                  <label [for]="customer">{{ customer.clientManagerName }}</label>
+
+                  <input type="hidden" name="SelectedCustomerEmails" id="SelectedCustomerEmailsField" formControlName="hideInput" />
+                </div>
+              </div>
+
+              <div class="worktype-val">
+                <div
+                  style="color: red; margin-left: 5px;">
+                  <label>{{errorMessage}}</label>
+                </div>
+              </div>
+              <!-- <div *ngIf="errorMessage" style="color: red; margin-left: 5px;">{{ errorMessage }}</div> -->
+            </div>
+          </div>
+
+          <div class="me-4 my-3 d-flex justify-content-end align-items-bottom">
+            <button type="button" class="btn btn-outline-info me-2 px-md-5 rounded-1 reset-button" style="font-family: Roboto;" [disabled]="isDisabled" (click)="clearInputs()">RESET</button>
+            <button type="button" class="btn btn-info text-white px-md-4 rounded-1 send-button" style="font-family: Roboto;" [disabled]="isDisabled" (click)="sendEmail();">SEND EMAIL</button>
+          </div>
+        </div>
+      </form>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  style="background-color: rgba(90, 64, 147, 0.089);">
+  <div class="modal-dialog">
+    <div class="modal-content feedback-popup">
+      <div class="modal-header" style="border-bottom: none;">
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center;">{{MailUpdate}}</p>
+
+        <div class="text-center">
+          <button class="btn btn-primary" id="okButton" (click)="onOkButtonClick()">Ok</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

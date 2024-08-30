@@ -1,0 +1,17 @@
+<div class="feedback-container">
+  <form (ngSubmit)="onSubmit()">
+    <h2>How was your experience?</h2>
+
+    <div class="emoji-selection">
+      <div *ngFor="let emoji of emojis" class="emoji-option"
+           [class.selected]="emoji === selectedEmoji"
+           (click)="selectEmoji(emoji)">
+        <svg [attr.viewBox]="emoji.viewBox" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+          <path [attr.d]="emoji.path" />
+        </svg>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!selectedEmoji">Submit Feedback</button>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+.apexcharts-legend {
+  justify-content: left !important;
+  left: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.dashboard-card-content {
+  text-align: left !important;
+}
+
+;
+
+
+.apexcharts-legend-series {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.apexcharts-legend-marker {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+
+}
+
+.apexcharts-legend-text {
+  color: #515589;
+}

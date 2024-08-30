@@ -1,0 +1,103 @@
+<div class="container-fluid px-5 pt-2" style="background-color:white;">
+  <div class="row">
+
+
+
+
+<!-- <form class="d-flex justify-content-end align-items-top" [formGroup]="dateFilterForm" >
+  <mat-form-field class="rounded-2" style="height: 5rem;">
+    <input (keypress)="$event.preventDefault()" matInput [matDatepicker]="fromDatePicker" placeholder="From Date" formControlName="fromDate" [value]="date1.value" [max]="maxDate">
+    <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #fromDatePicker></mat-datepicker>
+    <mat-error *ngIf="dateFilterForm.get('fromDate')!.hasError('required')">From Date is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field style="height: 5rem;margin-right: auto;">
+    <input  (keypress)="$event.preventDefault()" matInput [matDatepicker]="toDatePicker" placeholder="To Date" formControlName="toDate" [max]="maxDate">
+    <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #toDatePicker></mat-datepicker>
+    <mat-error *ngIf="dateFilterForm.get('toDate')!.hasError('required')">To Date is required</mat-error>
+  </mat-form-field>
+<div class="generatebtn" style="margin-right: 32% !important;">
+  <button mat-raised-button color="primary" type="submit" (click)="generateReport()">Generate Report</button>
+</div>
+</form> -->
+
+<div class="col-md-12 d-flex justify-content-between align-items-center pt-2 pb-2"  style="border:1px solid grey">
+  <h3 class="fs-3 mb-0" style="text-align: left;">Feedback Summary Report</h3>
+  <form class="col-md-7 d-flex justify-content-between align-items-top mb-0" [formGroup]="dateFilterForm">
+    <!-- From Date input -->
+    <div id="input" class="form-control d-flex justify-content-between align-items-center p-0">
+      <input class="form-control border-0" (keypress)="$event.preventDefault()" matInput [matDatepicker]="fromDatePicker" (keydown)="onInput($event)" (keypress)="$event.preventDefault()" placeholder="From Date" formControlName="fromDate" [value]="date1.value" [max]="maxDate" required>
+      <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #fromDatePicker></mat-datepicker>
+      <!-- <mat-error class="d-flex justify-content-center align-items-center flex-column" *ngIf="dateFilterForm.get('fromDate')!.invalid && dateFilterForm.get('fromDate')!.touched"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em"><path fill="#ff0000" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>Required</mat-error> -->
+    </div>
+
+    <!-- To Date input -->
+    <div id="input" class="form-control d-flex justify-content-between align-items-center p-0 mx-4">
+      <input class="form-control border-0" (keypress)="$event.preventDefault()" matInput [matDatepicker]="toDatePicker" (keydown)="onInput($event)" (keypress)="$event.preventDefault()" placeholder="To Date" formControlName="toDate" [max]="maxDate" required>
+      <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #toDatePicker></mat-datepicker>
+      <!-- <mat-error class="d-flex justify-content-center align-items-center flex-column" *ngIf="dateFilterForm.get('toDate')!.invalid && dateFilterForm.get('toDate')!.touched"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em"><path fill="#ff0000" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>Required</mat-error> -->
+    </div>
+
+    <!-- Generate Report button -->
+    <div class="col-md-4 m-0">
+      <button class="m-0" mat-raised-button color="primary" type="submit" (click)="generateReport()">Generate Report</button>
+    </div>
+
+
+  </form>
+</div>
+<div class="col-md-12 d-flex">
+ 
+  <div class="col-md-5 d-flex justify-content-start"></div>
+  <div *ngIf="showDateErrors && !apiDataReceived && !noDataReceived" class="error-message text-danger col-md-2 ms-2">From Date is Required</div>
+ 
+   <div *ngIf="showDateErrors && !apiDataReceived && !noDataReceived" class="error-message text-danger col-md-2" style="margin-left: 3%;">To Date is Required</div>
+</div>
+
+<div *ngIf="noDataReceived && !projectSurveyDetails" class="container d-flex justify-content-center align-items-center" id="dvNoDataMessage">
+  <p style="color: red;">{{validationMessage}}</p>
+</div>
+
+
+
+<div class="row d-flex justify-content-between mt-5" id="dvPieChart"  *ngIf="apiDataReceived">
+  <div class="col-md-6">
+    <app-piechart class="col-md-12" #PaiChart *ngIf="isPieChart" [seriesValue]="seriesValue" [labels]="projectNames">
+    </app-piechart>
+  </div>
+  <div class="col-md-6" *ngIf="isPieChart" style="max-height: 56.5vh;overflow-y: auto;">
+    <mat-table [dataSource]="dataSource" class="shadow-sm border"
+>
+      <!-- Project Name Column -->
+      <ng-container matColumnDef="projectName">
+        <mat-header-cell *matHeaderCellDef class="text-white fs-6 border" style="background-color: #209EC5;"> Project </mat-header-cell>
+        <mat-cell class="border-end" *matCellDef="let row"> {{ row.porjectName }} </mat-cell>
+      </ng-container>
+
+      <!-- Customer Name Column -->
+      <ng-container matColumnDef="customerName">
+        <mat-header-cell *matHeaderCellDef class="text-white fs-6 border" style="background-color: #209EC5;" > Customer </mat-header-cell>
+        <mat-cell class="border-end" *matCellDef="let row" > {{ row.status }} </mat-cell>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef class="text-white fs-6 border" style="background-color: #209EC5;" > Status </mat-header-cell>
+        <mat-cell *matCellDef="let row" > {{ row.clientName }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>
+
+  </div>
+
+
+
+</div>

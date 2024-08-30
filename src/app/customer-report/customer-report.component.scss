@@ -1,0 +1,81 @@
+.container-fluid {
+  background-color: #b3dded;
+  min-height: 89vh;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  margin-right: -10px;
+  margin-top: 70px;
+  margin-left: 40px;
+}
+
+button {
+  margin-right: 45px;
+  align-items: center;
+  margin-top: 49px;
+}
+
+.container {
+  display: flex;
+}
+
+.table-container {
+  flex: 1;
+  margin-right: 20px;
+  width: 60%; // Adjust the margin as needed
+}
+.chart-container{
+  flex: 1;
+  margin-right: 203px;
+  width: 40%; // Adjust the margin as needed
+}
+
+.table-container {
+  mat-table {
+
+    margin: auto;
+    background-color: #2d3f5b; // Background color for the table
+    border-radius: 5px;
+  }
+
+  .mat-cell, .mat-header-cell {
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    color: #ccc;
+  }
+
+  .mat-header-cell {
+    font-weight: bold;
+
+    background-color: #2196f3;
+    color: rgb(219, 217, 229);
+  }
+
+  .mat-row:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
+.generatebtn
+{
+  margin-right: -5% !important;
+}
+.dvContainer
+{
+  margin-top: -1rem !important;
+  margin-right: 1rem !important;
+  margin-left: 12rem !important;
+}
+
+
+
+

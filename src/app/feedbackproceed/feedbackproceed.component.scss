@@ -1,0 +1,133 @@
+// #divBackground{
+//     background-image: url(../../assets/Send-email-bg-1.png);
+// }
+
+  .imgfdbkheader {
+width:100%;
+padding:0px;
+margin:0px;
+  }
+  .toolbar-text {
+    color:#FCBF49;
+    font-size: 24px;
+    height: 36px;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .mat-icon-image {
+    margin-right:32px;
+    height: auto;
+  }
+  .h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: -180px;
+  }
+  .image-element {
+    //width: 204px;
+    height:190px;
+    gap: 0px; /* Note: The `gap` property is typically used with flexbox or grid layouts. If it's not in such a context, it might be ignored. */
+    border-radius: 30px 0 0 0; /* Applies rounded corners only on the top-left corner */
+    opacity: 1; /* Fully transparent element */
+    margin-top:37px;
+    margin-bottom: 40px;
+  }
+  .body-background-color{
+    background: #F8F8F9
+  }
+  .mat-label-generic-body {
+    font-family: 'Inter', sans-serif; /* Specifies the Inter font family with a fallback */
+    font-size: 16px;                 /* Sets the font size to 16 pixels */
+    font-weight: 500;                /* Sets the font weight to 500 (medium) */
+    line-height: 24px;               /* Sets the line height to 24 pixels */
+    text-align: center;              /* Centers the text horizontally */
+    //width:1000px;
+    color: #575369;
+    margin-bottom:20px;
+  }
+  .button-element {
+    width: 230px;                /* Sets the width of the element to 230 pixels */
+    height: 44px;                /* Sets the height of the element to 44 pixels */
+    gap: 10px;                   /* Typically used in flexbox or grid layouts; if not used, this property might be ignored */
+    border-radius: 4px 0 0 0;   /* Applies rounded corners with a radius of 4 pixels to the top-left corner */
+    opacity: 1;                 /* Sets the opacity to 0, making the element fully transparent */
+    background-color: #F16A22;
+    color: white;              /* Text color */
+    border: none;             /* Removes default border */
+    border-radius: 4px;      /* All corners rounded */
+    text-align: center;
+    padding: 10px 20px;       /* Padding inside the button */
+  }
+
+  .fdbkheader{
+    background: none;
+    display: inline-flex;
+    padding: 14px 15px 14px 15px;
+    flex-direction: row;
+    position: absolute;
+    z-index: 999;
+    top: 0px;
+}
+.toolbar-text h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  border-left: 1px solid #7B7B7B;
+  padding: 10px 0px;
+  padding-left: 24px;
+}
+
+.items-center {
+  text-align: center;
+}
+
+.fixed-top {
+  position: absolute !important;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .h4 {
+    margin-top:-84px;
+  }
+  .image-element[_ngcontent-ng-c358375642] {
+    height: 150px;
+    margin-top: 2px;
+
+  }
+  .text-center {
+    padding:20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-element {
+    margin-top: 137px;
+        margin-bottom: 10px;
+    }
+
+    .mat-label-generic-body {
+    padding: 0px 20px;
+        line-height: 30px;
+    }
+
+    .toolbar-text {
+        position: absolute;
+        top: 41px;
+        left: 40px;
+       }
+
+    .toolbar-text h1 {
+    border-left:0px;
+    }
+  .image-element {
+    height: 120px;
+  }
+
+  }

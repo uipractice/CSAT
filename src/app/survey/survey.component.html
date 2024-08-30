@@ -1,0 +1,139 @@
+<div class="container" *ngIf="showForm" routerLink="/survey">
+  <mat-card>
+    <img mat-card-image src="../../assets/surveypic1.png" alt="Photo of a CustomerSatisfaction" style="height: 500px;">
+    <img src="../../assets/cropped-Evoke_logo.png" alt="evoke logo" class="innerimage">
+  </mat-card>
+  <mat-card style="background-color: transparent;">
+    <mat-card-header class="d-flex justify-content-center">
+        <mat-card-title><h3 style="font-family: Georgia, 'Times New Roman', Times, serif;color: #362c7c">{{projectName}}</h3></mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content style="background-color: #ffffff82;border-radius: 10px;">
+      <form [formGroup]="surveyForm" (ngSubmit)="submitSurvey()">
+        <table class="table table-bordered table-striped mt-3" formArrayName="questions">
+          <thead>
+            <tr>
+              <th class="text-center" style="width: 300px;"><img src="../../assets/QuestionMark.png" height="50px"
+                  width="50px"></th>
+              <th class="text-center">
+                <div style="display: flex; justify-content: space-between;">
+                  <img src="../../assets/very_dissatisfied-default.jpg" height="50px" width="50px" style="margin-left: 20px;">
+                  <img src="../../assets/dissatisfied-default.jpg" height="50px" width="50px" style="margin-left:15px">
+                  <img src="../../assets/neutral-default.jpg" height="50px" width="50px" style="margin-left:10px">
+                  <img src="../../assets/satisfied-default.jpg" height="50px" width="50px">
+                  <img src="../../assets/very_satisfied-default.jpg" height="50px" width="50px" style="margin-right: 10px;">
+                </div>
+              </th>
+
+              <th class="text-center" style="width:350px"><img src="../../assets/greenmark.png" height="50px"
+                  width="50px"></th>
+            </tr>
+            <tr>
+              <th class="text-center" style="width: 300px;font-size: larger;">Questions</th>
+              <th>
+
+                <span style="color: #FD0501; margin-right: 10px;">Very Dissatisfied</span>
+                <span style="color: #FE8305; margin-right: 10px;">Dissatisfied</span>
+                <span style="color: #FFE425; margin-right: 10px;">Neutral</span>
+                <span style="color: #8DDC37; margin-right: 10px;">Satisfied</span>
+                <span style="color: #4FBA4B;">Excellent</span>
+
+
+              </th>
+
+
+              <th class="text-center" style="width:350px;font-size: larger;">Remarks</th>
+            </tr>
+          </thead>
+          <tbody  *ngFor="let question of questionForm?.controls;index as i">
+            <tr [formGroupName]="i">
+              <td><mat-label>{{fields[i].questionText}}</mat-label> </td>
+              <td *ngIf="fields[i].type=='radio'" formArrayName="ratings" style="display: flex;justify-content: space-between;height: 120px;align-items: center;"> 
+                <span [formGroupName]="j" *ngFor="let rating of fields[i].radioList;let j=index" class="text-center" style="display: flex;justify-content:space-between;">
+                <mat-radio-group formControlName="id" name="{{fields[i].questionId}}" layout="row">
+                  <mat-radio-button  class="md-primary" [value]="j+1" color="primary" (click)="radioSelect(i,j)"  [name]='j.toString()' style="position: absolute;">
+                    <img [src]="getFeedbackImage(j)" alt="Feedback Image" class="fdbakimg" style="width: 40px;position: absolute;z-index: 1;left:0;top: 1px;">
+                  </mat-radio-button>
+                </mat-radio-group>
+              </span>
+              </td>
+  
+                <td class="text-center" *ngIf="fields[i].type=='radio'">
+                  <mat-form-field class="example-full-width custom-textarea">
+                    <mat-label>Leave a Comment</mat-label>
+                    <textarea matInput  placeholder="Express Your Views" formControlName="comment"></textarea>
+                  </mat-form-field>
+                </td>
+                <td *ngIf="fields[i].type=='text'" colspan="2">
+                  <div class="row">
+                    <div class="col-12">
+                      <mat-form-field class="example-full-width" style="width: 100%;">
+                        <input matInput formControlName="text" placeholder="Enter Your Suggestions"> 
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- <div class="row">
+          <div class="col-12">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>What could we do differently to add more value to you</mat-label>
+              <input matInput formControlName="question8" placeholder="Enter Your Suggestions">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Please tell us what you like about us so that we can continue to do it</mat-label>
+              <input matInput formControlName="question9" placeholder="Tell Us What You Like">
+            </mat-form-field>
+          </div>
+        </div> -->
+        <div *ngIf="formSubmitted && !surveyForm.valid" style="color: red;">Please fill the form properly</div>
+
+        <div class="fdbkbuttons">
+          <button mat-raised-button color="primary" class="m-3" id="openModalButton" >Submit</button>
+          <button mat-raised-button color="primary" class="m-3" (click)="fnSave($event)">Save</button>
+          <button mat-stroked-button color="primary" class="m-3" type="reset" (click)="resetForm()">Clear Form</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+<div class="container">
+  <mat-card *ngIf="showMessage" class="message-card">
+    <mat-card-content>
+      <h2>Thank You!</h2>
+      <p>Your insights are incredibly important to us, and we appreciate the time you took to share your thoughts. </p>
+      <p>If you have any further suggestions or if there's anything specific you'd like to discuss, please feel free to reach out. We're here for you!</p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngIf="feedBackSubMessage" class="message-card">
+    <mat-card-content>
+      <!-- <h2>Feedback is already submitted</h2> -->
+      <p>We have already received your feedback. If there's anything else you'd like to share, please don't hesitate to reach out</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: rgba(111, 0, 163, 0.089);">
+  <div class="modal-dialog">
+    <div class="modal-content feedback-popup">
+      <div class="modal-header" style="border-bottom: none;">
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center;" *ngIf="surveyFeed">{{surveyBack}}</p>
+        <p style="text-align: center;" *ngIf="saveSur">{{saveSurvey}}</p>
+        <div class="text-center">
+          <button class="btn btn-primary" id="okButton"  (click)="onOkButtonClick()">Ok</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
